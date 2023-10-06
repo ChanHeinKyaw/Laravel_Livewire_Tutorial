@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Livewire\Users\UserAdd;
+use App\Livewire\Users\UserDetail;
+use App\Livewire\Users\UserList;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,3 +27,7 @@ Route::view('profile', 'profile')
     ->name('profile');
 
 require __DIR__.'/auth.php';
+
+Route::get('/users', UserList::class);
+Route::get('/users/view/{id}', UserDetail::class);
+Route::get('/users/add', UserAdd::class);

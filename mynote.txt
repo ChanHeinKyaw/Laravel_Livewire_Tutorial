@@ -1,0 +1,60 @@
+Livewire
+Livewire ကို အကျဉ်းချုပ်အားဖြင့် JavaScript တွေရေးစရာမလိုတော့ဘဲ PHP နဲ့ပဲ Sing-Page Application (SPA) တွေ ဖန်တီးလို့ရတဲ့ နည်းပညာ တစ်ခုဖြစ်ပါတယ်။
+
+
+Laravel Breeze
+Laravel Breeze ဟာ အသင့်သုံး User Authentication System ကို Tailwind တို့ Livewire တို့နဲ့ ရေးပေးထားတဲ့ Official Package တစ်ခုဖြစ်ပါတယ်။ 
+ဒီ Package ကို Install လုပ်လိုက်ခြင်းအားဖြင့် User Authentication အပြင် Tailwind တို့ Livewire တို့လည်း တစ်ခါထဲ ထည့်သွင်းပါဝင်သွားပြီး ဖြစ်စေပါတယ်။ 
+
+
+cmd => php artisan breeze:install
+
+
+Creating Livewire Components
+php artisan livewire:layout
+php artisan make:livewire users.user-list
+php artisan make:livewire users.user-detail
+php artisan make:livewire users.user-add
+
+
+ပထမ Command က resources/views/components/layouts/app.blade.php အမည်နဲ့ Main Layout View ဖိုင်တစ်ခုကို တည်ဆောက်ပေးသွားမှာဖြစ်ပါတယ်။ 
+Livewire Component တွေအတွက် Component Class ဖိုင်တွေကို app/Livewire ထဲမှာ တည်ဆောက်ပေးသွားမှာ ဖြစ်ပြီး သူနဲ့တွဲဖက်သုံးဖို့အတွက် View ဖိုင်တွေကို 
+resources/views/livewire ထဲမှာ တည်ဆောက်ပေးသွားမှာ ဖြစ်ပါတယ်။
+
+
+wire:navigate
+<a class="text-green-600 ms-6" href="/users/add" wire:navigate>+ Add User</a>
+
+<a> Element မှာ wire:navigate Attribute ပါသွားပါတယ်။ ဒါကြောင့် ဒီ <a> Element ကို နှိပ်တဲ့အခါ နောက်တစ်မျက်နှာအနေနဲ့ Page Reload နဲ့ မသွားတော့ဘဲ 
+သက်ဆိုင်ရာ Component ကို နေရာမှာတင် Single-page အနေနဲ့ ပြောင်းပြီး ပြပေးသွားမှာပါ။ 
+
+
+wire:key 
+Loop လုပ်ထားတဲ့ Item တွေမှာ Unique ဖြစ်တဲ့ Key Attribute ရှိမှသာ နောက်ပိုင်း အပြောင်းအလဲ ရှိတဲ့အခါ List တစ်ခုလုံးကို အစအဆုံး ပြန်ပြီး 
+Render လုပ်စရာမလိုဘဲ လိုတဲ့အပိုင်းလေးပဲ ရွေးပြီး လုပ်လို့ရစေဖို့ ဖြစ်ပါတယ်။
+
+
+wire:click
+wire:click ကတော့ Button ကို နှိပ်တဲ့အချိန်မှာ Run စေချင်တဲ့ Function (Component Method) ကို ပေးရတာပါ။
+
+
+mount() 
+mount() မှာရေးတာက $id URL Parameter ကို လိုချင်လို့ပါ။ Route မှာ /users/view/{id} လို့ သတ်မှတ်ထားတဲ့အတွက် Controller Method တွေမှာ 
+$id ကို ယူသုံးလို့ရသလိုပဲ mount() မှာလည်း ယူသုံးလို့ရပါတယ်။ mount() Method ဟာ Livewire ရဲ့ Lifecycle Method 
+တွေထဲကတစ်ခုဖြစ်ပြီး Component ကို Render လုပ်တဲ့အချိန်တိုင်းမှာ အလိုအလျှောက် အလုပ်လုပ်တဲ့ Method တစ်ခုပါ။
+
+
+wire:submit
+<form> မှာ wire:submit နဲ့ save() ကို ခေါ်ထားခြင်းဖြစ်ပါတယ်။ ဒါကြောင့် ဒီ Form မှာ Submit နှိပ်လိုက်ရင် Page Reload နဲ့ Server Submit မလုပ်တော့ဘဲ 
+UserAdd Class ရဲ့ save() Method ကို ခေါ်ပေးသွားမှာဖြစ်ပါတယ်။
+
+
+wire:model
+Input ကို Class Property နဲ့ ချိတ်ပေးလိုက်တာပါ။ ဒါကြောင့် ဒီ Input တွေမှာ ရေးဖြည့်လိုက်သမျှ 
+သက်ဆိုင်ရာ $name နဲ့ $email Property တွေထဲကို အလိုအလျှောက် ရောက်သွားမှာပါ။
+UserAdd Component Class ထဲက Name တို့ Email တို့ကို Property တွေကနေ ရပါတယ်။ Property တွေက Input Value တွေပါပဲ။ 
+wire:model နဲ့ချိတ်ပေးထားလို့ပါ။
+
+
+$this->reset()
+Property Value တွေကို ပြန် Clear လုပ်လိုက်တာပါ။
